@@ -24,7 +24,18 @@
 ;;;; Para los datos calculados se puede utilizar: https://www.labdeiters.com/nutricalculadora/ o https://fitia.app/buscar/alimentos-y-recetas/
 
 
-;;El string replace no esta porque tengo que arreglarlo todavia, este es el malo 
+;(deffunction new-str-replace (?str ?rpl ?fnd)
+;   (if (eq ?fnd "") then (return ?str))
+;   (bind ?rv "")
+;   (bind ?i (str-index ?fnd ?str))
+;   (while ?i
+;      (bind ?rv (str-cat ?rv (sub-string 1 (- ?i 1) ?str) ?rpl))
+;      (bind ?str (sub-string (+ ?i (str-length ?fnd)) (str-length ?str) ?str))
+;      (bind ?i (str-index ?fnd ?str)))
+;   (bind ?rv (str-cat ?rv ?str))
+;   (return ?rv)
+;)
+
 (deffunction str-replace (?str ?rpl ?fnd)
    (if (eq ?fnd "") then (return ?str))
    (bind ?rv "")
@@ -34,7 +45,7 @@
       (bind ?str (sub-string (+ ?i (str-length ?fnd)) (str-length ?str) ?str))
       (bind ?i (str-index ?fnd ?str)))
    (bind ?rv (str-cat ?rv ?str)))
-   
+
 (deffunction   pregunta  (?pregunta  $?valores-permitidos)
        (progn$
          (?var ?valores-permitidos)
@@ -72,6 +83,7 @@
 
 (deffacts es_un_tipo_de_alimentos
 (es_un_tipo_de carne_roja carne)
+(es_un_tipo_de lomo carne_roja)
 (es_un_tipo_de ternera carne_roja)
 (es_un_tipo_de cerdo carne_roja)
 (es_un_tipo_de cordero carne_roja)
@@ -83,7 +95,9 @@
 (es_un_tipo_de queso lacteos)
 (es_un_tipo_de yogur lacteos)
 (es_un_tipo_de atun pescado) 
-(es_un_tipo_de salmon pescado)    
+(es_un_tipo_de salmon pescado)
+(es_un_tipo_de salmon_ahumado pescado)
+(es_un_tipo_de surimi pescado)     
 (es_un_tipo_de boquerones pescado)
 (es_un_tipo_de sardinas pescado)
 (es_un_tipo_de salchichon embutidos)
@@ -112,6 +126,8 @@
 (es_un_tipo_de ajo verdura)
 (es_un_tipo_de pimiento verdura)
 (es_un_tipo_de zanahoria verdura)
+(es_un_tipo_de patata verdura)
+(es_un_tipo_de verduras_para_ensaladilla verdura)
 (es_un_tipo_de cebolla verdura)
 (es_un_tipo_de tomate verdura)
 (es_un_tipo_de pimiento_rojo pimiento)
@@ -123,6 +139,7 @@
 (es_un_tipo_de mortadela fiambres)
 (es_un_tipo_de jamon_de_york fiambres)
 (es_un_tipo_de aceitunas_verdes frutos)
+(es_un_tipo_de aceitunas_rellenas frutos)
 (es_un_tipo_de aceitunas_rojas frutos)
 )
 
@@ -131,6 +148,7 @@
 (es_un_tipo_de caldo condimento)
 (es_un_tipo_de vino condimento)
 (es_un_tipo_de aceite condimento)
+(es_un_tipo_de mahonesa condimento)
 (es_un_tipo_de ajo condimento)
 (es_un_tipo_de salsa condimento)
 (es_un_tipo_de bebida condimento)
@@ -149,6 +167,7 @@
 
 (deffacts especias
 (es_un_tipo_de sal especies)
+(es_un_tipo_de cebolleta especies)
 (es_un_tipo_de azafran especies)
 (es_un_tipo_de laurel especies)
 (es_un_tipo_de curry especies)
@@ -160,6 +179,7 @@
 (compuesto_fundamentalmente_por pan harina)
 (compuesto_fundamentalmente_por pasta harina)
 (compuesto_fundamentalmente_por pizza harina)
+(compuesto_fundamentalmente_por caldo_de_pollo pollo)
 )
 
 
@@ -219,46 +239,46 @@
             (assert (es_un_tipo_de ?a ?g))))
 )
 
-(defrule es_un_tipo_de_grupo
-    (es_grupo_alimentos ?g)
-    (or (es_alimento ?a) (es_grupo_alimentos ?a))
-    (not (es_un_tipo_de ?a ?))
-    (test (neq ?a ?g))
-    =>
-    (bind ?cadeneta (str-cat "" ?a))
-    (while (neq (str-index "_" ?cadeneta) FALSE) do
-        (bind ?espacio_a (str-index "_" ?cadeneta))
-        (bind ?primera_palabra_a (sub-string 1 (- ?espacio_a 1) ?cadeneta))
-        (if (and (neq ?primera_palabra_a "de") (neq ?primera_palabra_a "con") (neq (str-index ?primera_palabra_a ?g) FALSE)) then
-            (assert (es_un_tipo_de ?a ?g)))
-        (bind ?borra (str-cat primera_palabra_a "_"))
-        (bind ?cadeneta (str-replace ?cadeneta "" ?borra )))
-    (if (and (neq (str-index ?cadeneta ?g) FALSE) (neq ?cadeneta "de") (neq ?cadeneta "con")) then
-        (assert (es_un_tipo_de ?a ?g)))
-)
+;(defrule es_un_tipo_de_grupo
+;    (es_grupo_alimentos ?g)
+;    (or (es_alimento ?a) (es_grupo_alimentos ?a))
+;    (not (es_un_tipo_de ?a ?))
+;    (test (neq ?a ?g))
+;    =>
+;    (bind ?cadeneta (str-cat "" ?a))
+;    (while (neq (str-index "_" ?cadeneta) FALSE) do
+;        (bind ?espacio_a (str-index "_" ?cadeneta))
+;        (bind ?primera_palabra_a (sub-string 1 (- ?espacio_a 1) ?cadeneta))
+;        (if (and (neq ?primera_palabra_a "de") (neq ?primera_palabra_a "con") (neq (str-index ?primera_palabra_a ?g) FALSE)) then
+;            (assert (es_un_tipo_de ?a ?g)))
+;        (bind ?borra (str-cat primera_palabra_a "_"))
+;        (bind ?cadeneta (str-replace ?cadeneta "" ?borra )))
+;    (if (and (neq (str-index ?cadeneta ?g) FALSE) (neq ?cadeneta "de") (neq ?cadeneta "con")) then
+;        (assert (es_un_tipo_de ?a ?g)))
+;)
 
-(defrule es_un_tipo_de_por_alimento
-(declare (salience 1))
-(es_alimento ?a)
-(es_alimento ?b)
-(test (neq ?a ?b))
-(not (es_un_tipo_de ?a ?))
-(es_un_tipo_de ?b ?g)
-=>
-(bind ?cadeneta (str-cat "" ?a))
-(while (neq (str-index "_" ?cadeneta) FALSE) do
-    (bind ?espacio_a (str-index "_" ?cadeneta))
-    (bind ?primera_palabra_a (sub-string 1 (- ?espacio_a 1) ?cadeneta))
-    (if (and (neq ?primera_palabra_a "de") (neq ?primera_palabra_a "con") (neq (str-index ?primera_palabra_a ?b)FALSE)) then
-        (assert (es_un_tipo_de ?a ?g))
-    )
-    (bind ?borra (str-cat primera_palabra_a "_"))
-    (bind ?cadeneta (str-replace ?cadeneta "" ?borra ))
-)
-(if (and (neq(str-index ?cadeneta ?b)FALSE) (neq ?cadeneta "de") (neq ?cadeneta "con")) then
-    (assert(es_un_tipo_de ?a ?g))
-)    
-)
+;(defrule es_un_tipo_de_por_alimento
+;(declare (salience 1))
+;(es_alimento ?a)
+;(es_alimento ?b)
+;(test (neq ?a ?b))
+;(not (es_un_tipo_de ?a ?))
+;(es_un_tipo_de ?b ?g)
+;=>
+;(bind ?cadeneta (str-cat "" ?a))
+;(while (neq (str-index "_" ?cadeneta) FALSE) do
+;    (bind ?espacio_a (str-index "_" ?cadeneta))
+;    (bind ?primera_palabra_a (sub-string 1 (- ?espacio_a 1) ?cadeneta))
+;    (if (and (neq ?primera_palabra_a "de") (neq ?primera_palabra_a "con") (neq (str-index ?primera_palabra_a ?b)FALSE)) then
+;        (assert (es_un_tipo_de ?a ?g))
+;    )
+;    (bind ?borra (str-cat primera_palabra_a "_"))
+;    (bind ?cadeneta (str-replace ?cadeneta "" ?borra ))
+;)
+;(if (and (neq(str-index ?cadeneta ?b)FALSE) (neq ?cadeneta "de") (neq ?cadeneta "con")) then
+;    (assert(es_un_tipo_de ?a ?g))
+;)    
+;)
 
 
 (defrule de_alimento_a_grupo
@@ -355,14 +375,14 @@
 (defrule carga_recetas
 (declare (salience 1000))
 =>
-(load-facts "recetas.txt")
+(load-facts "/home/jesus/Segundo_cuatri/IC/Practica/Practica2/recetas.txt")
 )
 
 
 (defrule guarda_recetas
 (declare (salience -1000))
 =>
-(save-facts "recetas_saved.txt")
+(save-facts "/home/jesus/Segundo_cuatri/IC/Practica/Practica2/recetas_saved.txt")
 )
 
 ;;;EJERCICIO: Añadir reglas para  deducir tal y como tu lo harias (usando razonamiento basado en conocimiento):
@@ -567,23 +587,28 @@
 
 ;;;;;;;;;;;; EJERCICIO 3 ;;;;;;;;;;;;;;;;
 
-
 ;;Lo uso en vegetariano y vegana
 (defrule tiene_carne_o_pescado
 (declare (salience -1))
 (es_un_ingredinente_de ?i ?r)
 (not(propiedad_receta lleva_carne_o_pescado ?r))
-(or (es_un_tipo_de ?i carne)(es_un_tipo_de ?i pescado)(es_un_tipo_de ?i embutidos) (es_un_tipo_de ?i fiambres)) 
+(or (es_un_tipo_de ?i carne)(es_un_tipo_de ?i pescado)(es_un_tipo_de ?i embutidos) (es_un_tipo_de ?i fiambres) (es_un_tipo_de ?i carne_blanca) (es_un_tipo_de ?i carne_roja)) 
 =>
 (assert(propiedad_receta lleva_carne_o_pescado ?r))
 )
+
+
 
 ;;Lo uso en vegano
 (defrule producto_origen_animal
 (declare(salience -1))
 (es_un_ingredinente_de ?i ?r)
 (not(propiedad_receta lleva_producto_animal ?r))
-(or (es_un_tipo_de ?i lacteos)(test(eq ?i huevos))(test(eq ?i huevo))) 
+(or 
+    (es_un_tipo_de ?i lacteos)
+    (test(eq ?i huevos))
+    (test(eq ?i huevo))
+) 
 =>
 (assert(propiedad_receta lleva_producto_animal ?r))
 )
@@ -593,7 +618,7 @@
 (declare(salience -1))
 (es_un_ingredinente_de ?i ?r)
 (not(propiedad_receta con_gluten ?r))
-(es_un_tipo_de ?ingrediente cereales)
+(es_un_tipo_de ?i cereales)
 =>
 (assert(propiedad_receta con_gluten ?r))
 )
@@ -604,14 +629,20 @@
 (declare(salience -1))
 (es_un_ingredinente_de ?i ?r)
 (not(propiedad_receta con_lactosa ?r))
-(es_un_tipo_de ?i lacteos)
+(or 
+    (es_un_tipo_de ?i lacteos) 
+    (test(eq ?i leche)) 
+    (test(eq ?i queso)) 
+    (test(eq ?i yogur)) 
+    (test(eq ?i helado))
+)
 =>
 (assert(propiedad_receta con_lactosa ?r))
 )
 
 ;; Recetas sin gluten
 (defrule receta_sin_gluten
-(declare(salience -2))
+(declare(salience -50))
 ?receta <- (receta(nombre ?n))
 (not(propiedad_receta con_gluten ?receta))
 =>
@@ -622,17 +653,17 @@
 
 ;; Receta es vegana
 (defrule receta_es_vegana
-(declare (salience -2))
+(declare (salience -50))
 ?receta <- (receta(nombre ?n))
-(not(propiedad_receta tiene_carne_o_pescado ?receta))
-(not(propiedad_receta producto_origen_animal ?receta))
+(not(propiedad_receta lleva_producto_animal ?receta))
+(not(propiedad_receta lleva_carne_o_pescado ?receta))
 => 
 (assert (propiedad_receta es_vegana ?receta))
 )
 
 ;; Receta es picante
 (defrule receta_es_picante
-(declare(salience -1))
+(declare(salience -50))
 (es_un_ingredinente_de ?i ?r)
 (not(propiedad_receta es_picante ?r))
 (es_un_tipo_de ?i picante)
@@ -642,16 +673,16 @@
 
 ;; Receta es vegetariana
 (defrule receta_es_vegetariana
-(declare (salience -2))
+(declare (salience -50))
 ?receta <- (receta(nombre ?n))
-(not(propiedad_receta tiene_carne_o_pescado ?receta))
+(not(propiedad_receta lleva_carne_o_pescado ?receta))
 =>
 (assert(propiedad_receta es_vegetariana ?receta))
 )
 
 ;; Recetas sin lactosa 
 (defrule receta_sin_lactosa
-(declare(salience -2))
+(declare(salience -50))
 ?receta <- (receta(nombre ?n))
 (not(propiedad_receta con_lactosa ?receta))
 =>
@@ -660,7 +691,7 @@
 
 ;; Receta es de dieta 
 (defrule receta_es_de_dieta
-(declare(salience -1))
+(declare(salience -50))
 ?receta <-(receta (nombre ?n)(Grasa ?g)(Carbohidratos ?c)(numero_personas ?p)(Colesterol ?col))
 (or 
     (propiedad_receta rico_fibras ?receta);;Si tiene mucha fibra es de dieta 
@@ -677,7 +708,7 @@
 ;; Para mostrar el ejercicio de recetas 
 
 (defrule mostrar_receta_y_ingrediente_relevante
-    (declare (salience -10))
+    (declare (salience -100))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta ingrediente_relevante ?receta ?ingrediente)
     =>
@@ -685,7 +716,7 @@
 )
 
 (defrule mostrar_tipo_plato
-    (declare (salience -11))
+    (declare (salience -110))
     ?receta <- (receta (nombre ?n) (tipo_plato $?tp))
     =>
     (printout t crlf "Receta: "?n crlf "Tipos de platos: "crlf)
@@ -696,7 +727,7 @@
 )
 
 (defrule mostrar_vegetarianas 
-    (declare (salience -12))
+    (declare (salience -120))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_vegetariana ?receta)
     =>
@@ -705,7 +736,7 @@
 )
 
 (defrule mostrar_veganas 
-    (declare (salience -13))
+    (declare (salience -130))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_vegana ?receta)
     =>
@@ -714,7 +745,7 @@
 )
 
 (defrule mostrar_sin_gluten 
-    (declare (salience -14))
+    (declare (salience -140))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_sin_gluten ?receta)
     =>
@@ -723,7 +754,7 @@
 )
 
 (defrule mostrar_sin_lactosa 
-    (declare (salience -15))
+    (declare (salience -150))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_sin_lactosa ?receta)
     =>
@@ -732,7 +763,7 @@
 )
 
 (defrule mostrar_picante 
-    (declare (salience -16))
+    (declare (salience -160))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_picante ?receta)
     =>
@@ -741,7 +772,7 @@
 )
 
 (defrule mostrar_de_dieta 
-    (declare (salience -17))
+    (declare (salience -170))
     ?receta <- (receta (nombre ?n))
     (propiedad_receta es_de_dieta ?receta)
     =>
