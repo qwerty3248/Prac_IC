@@ -920,7 +920,8 @@
 (declare (salience -100))
 ?receta <- (receta(nombre ?n))
 (modulo es_vegano)
-(not (propiedad_receta es_vegana ?receta))
+(not (propiedad_receta lleva_carne_o_pescado ?receta))
+(not (propiedad_receta lleva_producto_animal ?receta))
 (propiedad_receta es_candidata ?receta)
 ?borra <- (propiedad_receta es_candidata ?receta)
 =>
