@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8/"
+     xml:base="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-8="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#dificultad -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#dificultad">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>Alta</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>Facil</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>Media</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first>Muy facil</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#cliente_no_puede_comer_tipo_ingrediente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#cliente_no_puede_comer_tipo_ingrediente">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Cliente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#es_ingrediente_de -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#es_ingrediente_de">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_tiene_ingrediente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#ingrediente_es_un_tipo_de -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#ingrediente_es_un_tipo_de">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_ingrediente_tiene_propiedad"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#propiedad_ingrediente_tiene_tipo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#propiedad_ingrediente_tiene_tipo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#propiedad_receta_tiene_tipo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#propiedad_receta_tiene_tipo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_es_un_tipo_de -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_es_un_tipo_de">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_tiene_receta"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_tiene_ingrediente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_tiene_ingrediente">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_ingrediente_tiene_propiedad -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_ingrediente_tiene_propiedad">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_receta_tiene_propiedad -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_receta_tiene_propiedad">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_tiene_ingrediente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_tiene_ingrediente">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_tiene_receta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#tipo_tiene_receta">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Calorias -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Calorias">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Colesterol -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Colesterol">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Dificultad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Dificultad">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#dificultad"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Fibra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Fibra">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Grasas -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Grasas">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Hidratos -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Hidratos">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreIngrediente -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreIngrediente">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombrePropiedad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombrePropiedad">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreReceta -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreReceta">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreTipo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#NombreTipo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Proteinas -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Proteinas">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</xsd:minInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Cliente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Cliente"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#IngredienteMultiuso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#IngredienteMultiuso">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#es_ingrediente_de"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_receta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_receta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Receta">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#receta_tiene_ingrediente"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Cliente1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Cliente1">
+        <untitled-ontology-8:cliente_no_puede_comer_tipo_ingrediente rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida"/>
+        <untitled-ontology-8:receta_tiene_ingrediente rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente1"/>
+        <untitled-ontology-8:Calorias rdf:datatype="http://www.w3.org/2001/XMLSchema#int">24</untitled-ontology-8:Calorias>
+        <untitled-ontology-8:Colesterol rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</untitled-ontology-8:Colesterol>
+        <untitled-ontology-8:Dificultad rdf:datatype="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#dificultad">Facil</untitled-ontology-8:Dificultad>
+        <untitled-ontology-8:Fibra rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</untitled-ontology-8:Fibra>
+        <untitled-ontology-8:Grasas rdf:datatype="http://www.w3.org/2001/XMLSchema#int">12</untitled-ontology-8:Grasas>
+        <untitled-ontology-8:Hidratos rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5</untitled-ontology-8:Hidratos>
+        <untitled-ontology-8:NombreReceta>Colacao</untitled-ontology-8:NombreReceta>
+        <untitled-ontology-8:Proteinas rdf:datatype="http://www.w3.org/2001/XMLSchema#int">11</untitled-ontology-8:Proteinas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Comida"/>
+        <untitled-ontology-8:receta_es_un_tipo_de rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoReceta1"/>
+        <untitled-ontology-8:receta_tiene_ingrediente rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente2"/>
+        <untitled-ontology-8:Calorias rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</untitled-ontology-8:Calorias>
+        <untitled-ontology-8:Colesterol rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</untitled-ontology-8:Colesterol>
+        <untitled-ontology-8:Dificultad rdf:datatype="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#dificultad">Facil</untitled-ontology-8:Dificultad>
+        <untitled-ontology-8:Fibra rdf:datatype="http://www.w3.org/2001/XMLSchema#int">8</untitled-ontology-8:Fibra>
+        <untitled-ontology-8:Grasas rdf:datatype="http://www.w3.org/2001/XMLSchema#int">12</untitled-ontology-8:Grasas>
+        <untitled-ontology-8:Hidratos rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</untitled-ontology-8:Hidratos>
+        <untitled-ontology-8:NombreReceta>Cuscus</untitled-ontology-8:NombreReceta>
+        <untitled-ontology-8:Proteinas rdf:datatype="http://www.w3.org/2001/XMLSchema#int">12</untitled-ontology-8:Proteinas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+        <untitled-ontology-8:ingrediente_es_un_tipo_de rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente1"/>
+        <untitled-ontology-8:NombreIngrediente>Leche</untitled-ontology-8:NombreIngrediente>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Ingrediente"/>
+        <untitled-ontology-8:ingrediente_es_un_tipo_de rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente2"/>
+        <untitled-ontology-8:NombreIngrediente>Azucar</untitled-ontology-8:NombreIngrediente>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente"/>
+        <untitled-ontology-8:NombrePropiedad>Tiene Lactosa</untitled-ontology-8:NombrePropiedad>
+        <untitled-ontology-8:NombreTipo>Rico en sacarosa</untitled-ontology-8:NombreTipo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_ingrediente"/>
+        <untitled-ontology-8:NombrePropiedad>Rico en azucar</untitled-ontology-8:NombrePropiedad>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadReceta1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadReceta1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Propiedad_receta"/>
+        <untitled-ontology-8:NombrePropiedad>Se tiene que calentar antes de hacerse</untitled-ontology-8:NombrePropiedad>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_ingrediente"/>
+        <untitled-ontology-8:tipo_ingrediente_tiene_propiedad rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente1"/>
+        <untitled-ontology-8:NombreTipo>Lacteos</untitled-ontology-8:NombreTipo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoIngrediente2">
+        <untitled-ontology-8:tipo_ingrediente_tiene_propiedad rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadIngrediente2"/>
+        <untitled-ontology-8:NombreTipo>Condimento</untitled-ontology-8:NombreTipo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoReceta1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#TipoReceta1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#Tipo_receta"/>
+        <untitled-ontology-8:tipo_receta_tiene_propiedad rdf:resource="http://www.semanticweb.org/jesus/ontologies/2025/3/untitled-ontology-8#PropiedadReceta1"/>
+        <untitled-ontology-8:NombreTipo>Caliente</untitled-ontology-8:NombreTipo>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
